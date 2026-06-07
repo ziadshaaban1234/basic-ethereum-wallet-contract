@@ -1,0 +1,65 @@
+1-افتح جاناش cmd
+
+2-
+D:
+cd basic-wallet
+ 
+3-
+truffle compile
+ عمل truffle compile للعقد
+
+3-
+truffle migrate --reset --network ganache_network
+ عمل Migration (تشغيل العقد على Ganache)
+
+4-
+truffle console --network ganache_network
+
+فتح الـ Truffle Console علشان تتحكم في العقد
+
+5-
+const accounts = await web3.eth.getAccounts()
+accounts
+هات الحسابات اللي Ganache ولّدها
+
+6-
+const instance = await BasicWallet.deployed()
+
+الحصول على نسخة حقيقية من العقد اللي اتنشر على Ganache
+6-
+instance.address
+عرض عنوان العقد
+
+7-
+(await instance.getMyBalance({from: accounts[0]})).toString()
+
+عرض الرصيد
+
+8-
+await instance.deposit({from: accounts[0], value: web3.utils.toWei("1", "ether")})
+
+إيداع
+
+9-
+(await instance.getMyBalance({from: accounts[0]})).toString()
+
+عرض الرصيد
+
+
+10-
+await instance.withdraw(web3.utils.toWei("0.1", "ether"), {from: accounts[0]})
+
+سحب
+11-
+(await instance.getMyBalance({from: accounts[0]})).toString()
+عرض الرصيد
+
+
+12-
+await instance.transferTo(accounts[1], web3.utils.toWei("0.2", "ether"), {from: accounts[0]})
+
+تحويل
+
+13-
+(await instance.getMyBalance({from: accounts[0]})).toString()
+عرض رصيد الحساب بعد التحويل
