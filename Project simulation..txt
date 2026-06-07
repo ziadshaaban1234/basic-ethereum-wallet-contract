@@ -1,4 +1,4 @@
-1-افتح جاناش cmd
+1-فتح جاناش cmd
 
 2-
 D:
@@ -15,7 +15,7 @@ truffle migrate --reset --network ganache_network
 4-
 truffle console --network ganache_network
 
-فتح الـ Truffle Console علشان تتحكم في العقد
+فتح الـ Truffle Console للتحكم في العقد
 
 5-
 const accounts = await web3.eth.getAccounts()
